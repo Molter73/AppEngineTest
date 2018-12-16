@@ -1,31 +1,17 @@
 package com.moltra.appEngineTest;
 
-import java.io.IOException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+@EntityScan(basePackages = {"com.moltra.appEngineTest"})
+@EnableJpaRepositories(basePackages={"com.moltra.appEngineTest"}) 
+@SpringBootApplication
+public class HelloAppEngine extends SpringBootServletInitializer {
 
-@WebServlet(
-    name = "HelloAppEngine",
-    urlPatterns = {"/hello"}
-)
-public class HelloAppEngine extends HttpServlet {
-
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-@Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) 
-      throws IOException {
-
-    response.setContentType("text/plain");
-    response.setCharacterEncoding("UTF-8");
-
-    response.getWriter().print("Hello App Engine!\r\n");
-
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(HelloAppEngine.class, args);
+	}
 }
