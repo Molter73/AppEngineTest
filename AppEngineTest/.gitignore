@@ -1,0 +1,7 @@
+/target/
+
+.project
+.classpath
+.settings/
+
+/webapp/favicon.ico
